@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+// 花有很多类，
+// 构造函数
+var Flower = function(type) {
+  // 品类的花
+  this.type = type;  //属性
+}
+// 对象字面量 { } 对象
+var xiaoming = {
+  name: '小明',
+  sex: '男',
+  status: '单身20年',
+  room: '708',
+  sendFlower: function(target, flower) {
+    // this 指向对象自身
+    target.receiveFlower(this, flower);
+  }
+}
+
+var meimei = {
+  name: '小美',
+  sex: '女',
+  status: '单身',
+  room: '201',
+  receiveFlower: function(flower) {
+    console.log(this.name+'收到' + flower.type);
+  }
+}
+
+var huihui = {
+  name: '惠惠',
+  sex: '女',
+  status: '单身20年',
+  adoable: ['小刚', '小明'],
+  room: '201',
+  receiveFlower: function(sender, flower) {
+    if(this.adoable.indexOf(sender.name) >= 0) {
+      console.log('啊，我的男神，还是送给我！');
+    } else {
+      meimei.receiveFlower(flower);
+    }
+  }
+}
+
+var flower = new Flower('红玫瑰');
+xiaoming.sendFlower(huihui, flower);
+
+var flower1=new Flower('茉莉花');
+meimei.receiveFlower(this.flower1);
+</script>
+</body>
+</html>
